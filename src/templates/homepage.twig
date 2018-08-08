@@ -30,10 +30,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="book in books | filter: {language: selectedEntry.language} | orderBy : orderByField : reverseSort">
-                         <td class="col-md-3">{{ book.title }}</td>
-                         <td class = "col-md-3 hidden-xs hidden-sm">{{ book.author }}</td>
-                         <td class="col-md-3">{{ book.year}}</td>
+                <tr ng-repeat="book in books | filter: {language: selectedEntry.language}">
+                         <td>{{ book.title }}</td>
+                         <td>{{ book.author }}</td>
+                         <td>{{ book.year}}</td>
                     </span>
                 </tr>
             </tbody>
