@@ -53,4 +53,16 @@ class Book
     {
         return $this->year;
     }
+
+    /**
+     * @return array
+     */
+    public function getAll(){
+        return (array(
+            'title' => $this->title,
+            'author' => $this->author,
+            'language' => $this->language,
+            'year'=> $this->year
+            ));
+    }
 }

@@ -1,21 +1,45 @@
 {% include 'header.twig' %}
 
-<div class="container">
+{# Pass data from twig to JS #}
+<div class="bookset"  data-books="{{ books|json_encode() }}">
+</div>
+
+{% verbatim %}
+<div class="container" ng-app="booksApp"  ng-controller="booksController" ng-init= 'initialize();'>
+
     <div class="starter-template">
         <h1>My Book Catalogue</h1>
-        <table class="table">
+        Select Language:
+        <div>
+            <select ng-init= "selectedEntry = books[0]; initializeLanguage(selectedEntry.language) " name="langauge" ng-model="selectedEntry" ng-change="updateLanguage(selectedEntry.language)" ng-options="book.language for book in books | unique: 'language'" class="form-control">
+            </select>
+        </div>
+
+         <table class="table">
             <thead>
-                <tr><th>Title</th><th>Author</th><th>Year</th><th>Language</th></tr>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Year
+                    </th>
+                </tr>
             </thead>
             <tbody>
-                {% for book in books %}
-                <tr>
-                    <td>{{ book.title }}</td><td>{{ book.author }}</td><td>{{ book.year }}</td><td>{{ book.language }}</td>
+                <tr ng-repeat="book in books | filter: {language: selectedEntry.language} | orderBy : orderByField : reverseSort">
+                         <td class="col-md-3">{{ book.title }}</td>
+                         <td class = "col-md-3 hidden-xs hidden-sm">{{ book.author }}</td>
+                         <td class="col-md-3">{{ book.year}}</td>
+                    </span>
                 </tr>
-                {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+{% endverbatim %}
 
 {% include 'footer.twig' %}
