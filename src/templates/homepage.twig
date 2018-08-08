@@ -19,13 +19,23 @@
             <thead>
                 <tr>
                     <th>
-                        Title
+                        <a href="#" ng-click="orderByField='title'; reverseSort = !reverseSort">
+                        Title 
+                        <span ng-show="orderByField == 'title'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                        </a>
                     </th>
-                    <th>
+                    
+                    <th class="hidden-xs hidden-sm">
+                        <a href="#" ng-click="orderByField='author'; reverseSort = !reverseSort">
                         Author
+                        <span ng-show="orderByField == 'author'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                        </a>
                     </th>
                     <th>
+                        <a href="#" ng-click="orderByField='year'; reverseSort = !reverseSort">
                         Year
+                        <span ng-show="orderByField == 'year'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                        </a>
                     </th>
                 </tr>
             </thead>
