@@ -1,5 +1,7 @@
 # Intrepid Group Sample Application Solution
 
+Final version is hosted here http://35.231.56.196/
+
 ### TO run this code
     composer install
     php -S localhost:8000
